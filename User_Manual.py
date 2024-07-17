@@ -1,5 +1,6 @@
 import streamlit as st
 
+def main():
 # Custom CSS to style buttons and sections
 st.markdown(
     """
@@ -55,7 +56,7 @@ st.markdown(
 # Main title for the user guide
 st.markdown('<h1 style="color: orange;">DepresCare User Guide</h1>', unsafe_allow_html=True)
 
-def main():
+
     # Function to create a styled section with a button and description
     def create_section(button_text, description, button_color_class):
         st.markdown(
