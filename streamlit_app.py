@@ -55,17 +55,11 @@ def show_home_page():
         </style>
     """, unsafe_allow_html=True)
 
-# Function to display the classification page
-def show_classification_page():
-    import Classify_Depression
+elif selected == "Classify Depression":
     Classify_Depression.main()
 
-# Initialize the session state if not already done
-if 'page' not in st.session_state:
-    st.session_state['page'] = 'home'  # Default page
+elif selected == "Contact":
+    st.write("Contact page content goes here. Provide relevant contact information and resources.")
 
-# Routing logic
-if st.session_state['page'] == 'home':
-    show_home_page()
-elif st.session_state['page'] == 'Classify_Depression':
-    show_classification_page()
+elif selected == "Help":
+    st.write("Help page content goes here. Provide relevant help information and resources.")
