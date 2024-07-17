@@ -9,14 +9,14 @@ import User_Manual
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
-        options=["Home", "Classify Depression", "Contact", "User Manual"],
+        options=["Main", "Classify Depression", "Contact", "User Manual"],
         icons=["house", "search", "envelope", "book"],  # Changed "question-circle" to "book"
         menu_icon="cast",
         default_index=0,
     )
 
 # Main content based on selected option
-if selected == "Home":
+if selected == "Main":
     st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
     st.write("The purpose of DepresCare web application is to help users detect symptoms of depression found in text. "
              "DepresCare can assist users in identifying the type of depression by recognizing their depressive symptoms. "
