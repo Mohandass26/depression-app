@@ -5,8 +5,6 @@ import Classify_Depression
 import Contact
 
 
-# Custom title with color
-st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
 
 # Define the options for the menu
 with st.sidebar:
