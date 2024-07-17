@@ -178,58 +178,59 @@ def classify_depression():
 # User Manual content
 def user_manual():
     # Custom CSS to style buttons and sections
-st.markdown(
-    """
-    <style>
-    .section-container {
-        display: flex;
-        align-items: flex-start; /* Adjusted alignment */
-        background-color: #f5deb3; /* Light brown */
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
-    .button {
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-right: 20px;
-        min-width: 150px; /* Fixed width for buttons */
-        text-align: center;
-    }
-    .button-textbox {
-        background-color: #333333; /* Light black */
-    }
-    .button-classify {
-        background-color: black;
-        color: white; /* White text */
-    }
-    .button-classify:hover {
-         background-color:black;
-         color: red;
-    }
-    .button-next {
-        background-color: blue; /* Blue */
-    }
-    .button-return {
-        background-color: blue; /* Blue */
-    }
-    .button-click {
-        background-color: blue; /* Blue */
-    }
-    .section-content {
-        flex: 1;
-        margin-left: 20px;
-        font-size: 16px;
-        color: black; /* Text color */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+    st.markdown(
+        """
+        <style>
+        .section-container {
+            display: flex;
+            align-items: flex-start; /* Adjusted alignment */
+            background-color: #f5deb3; /* Light brown */
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 20px;
+            min-width: 150px; /* Fixed width for buttons */
+            text-align: center;
+        }
+        .button-textbox {
+            background-color: #333333; /* Light black */
+        }
+        .button-classify {
+            background-color: black;
+            color: white; /* White text */
+        }
+        .button-classify:hover {
+            background-color: black;
+            color: red; /* Red text on hover */
+        }
+        .button-next {
+            background-color: blue; /* Blue */
+        }
+        .button-return {
+            background-color: blue; /* Blue */
+        }
+        .button-click {
+            background-color: blue; /* Blue */
+        }
+        .section-content {
+            flex: 1;
+            margin-left: 20px;
+            font-size: 16px;
+            color: black; /* Text color */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
 
 st.markdown('<h1 style="color: orange;">DepresCare User Guide</h1>', unsafe_allow_html=True)
 
