@@ -1,11 +1,13 @@
+# main.py
 import streamlit as st
 from streamlit_option_menu import option_menu
 import Classify_Depression
+import Contact
 
 st.set_page_config(
-  page_title="DepresCare",
-  page_icon="🏠",
-  layout="centered"
+    page_title="DepresCare",
+    page_icon="🏠",
+    layout="centered"
 )
 
 # Custom title with color
