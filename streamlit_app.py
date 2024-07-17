@@ -42,7 +42,7 @@ st.markdown('<p style="text-align:center;">Click the button below to check your 
 if st.button("CLICK", key="click_button", help="Click to classify depression"):
     # Redirect logic goes here
     # Set a session state or perform some action to handle navigation
-    st.session_state['page'] = 'Classify_Depression'
+    st.session_state['page'] = 'Classify_Depression.py'
     st.experimental_rerun()
 
 # CSS for button styling
