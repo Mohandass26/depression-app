@@ -71,34 +71,26 @@ def main():
     button_texts = [
         "Text Box",
         "CLASSIFY",
-        "NEXT",
-        "RETURN",
-        "CLICK"
+        "RETURN"
     ]
 
     descriptions = [
         "Users can fill in the text box with any text they want to express their feelings or emotions during that situation.",
         'Users can click the "CLASSIFY" button to let the machine classify their text based on selected depressive symptoms found in the PHQ-9 instruments.',
-        'Users can click the "NEXT" button to seek professional help for further details.',
-        'Users can click the "RETURN" button to re-enter the text.',
-        'Users can press the "CLICK" button to visit the next page for Classifying Depression.'
+        'Users can click the "RETURN" button to re-enter the text.'
     ]
 
     button_colors = [
         "button-textbox",
         "button-classify",
-        "button-next",
-        "button-return",
-        "button-click"
+        "button-return"
     ]
 
     # Mapping button colors to button texts
     button_color_map = {
         "Text Box": "button-textbox",
         "CLASSIFY": "button-classify",
-        "NEXT": "button-next",
-        "RETURN": "button-return",
-        "CLICK": "button-click"
+        "RETURN": "button-return"
     }
 
     # Create sections using the defined content
