@@ -62,6 +62,8 @@ def main():
             text = re.sub(r'\d+', '', text)
         return text
 
+    # Custom title with color
+    st.markdown('<h1 style="color: orange;">Welcome to DepresCare</h1>', unsafe_allow_html=True)
     st.subheader("Text classifier for users based on emotions and feelings during that situations for detect depression")
 
     # Using session state to manage text input
