@@ -101,7 +101,7 @@ def main():
                 for phq, signals in detected_signals.items():
                     st.write(f"Detected Signals for {phq} : {signals}")
                 st.error(f"Prediction: {prediction}")
-                st.markdown('<p style="font-weight:bold; color:orange;">Based on the result, you MAY HAVE DEPRESSION. Please click Contact to seek for professional help .</p>', unsafe_allow_html=True)
+                st.markdown('<p style="font-weight:bold; color:orange;">Based on the result, you MAY HAVE DEPRESSION. Please click Contact to seek professional help for further information .</p>', unsafe_allow_html=True)
                 st.markdown("---")
                 st.write("Please click Contact at the Navigation Menu for further information or click RETURN to classify another text.")
             else:
