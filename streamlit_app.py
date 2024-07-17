@@ -18,6 +18,18 @@ def show_home_page():
     
     st.markdown('<p style="font-weight:bold; color:orange;">Symptoms are used to detect depression based on PHQ-9 are as below: </p>', unsafe_allow_html=True)
 
+    # Load Depression Lexicon
+    @st.cache_data
+    def load_lexicon():
+        return pd.read_csv('Depression_lexicon.csv')
+
+    # Loading the lexicon
+    lexicon = load_lexicon()
+
+    # Displaying lexicon data directly
+    st.write(lexicon)
+
+
     # Create a button with styling to navigate to Classify_Depression page
     if st.button("CLICK", key="click_button", help="Click to classify depression"):
         # Set the session state to navigate to the classification page
