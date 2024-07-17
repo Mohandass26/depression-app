@@ -39,7 +39,7 @@ elif selected == "Classify Depression":
     Classify_Depression.main()
 
 elif selected == "Contact":
-    st.write("Contact page content goes here. Provide relevant contact information and resources.")
+    Contact.main()
 
 elif selected == "Help":
     st.write("Help page content goes here. Provide relevant help information and resources.")
