@@ -1,5 +1,5 @@
 import streamlit as st
-import option_menu
+from streamlit_option_menu import option_menu
 import Classify_Depression
 
 st.set_page_config(
