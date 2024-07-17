@@ -103,7 +103,7 @@ def main():
                 st.error(f"Prediction: {prediction}")
                 st.markdown('<p style="font-weight:bold; color:orange;">Based on the result, you MAY HAVE DEPRESSION. Please click Contact to seek for professional help .</p>', unsafe_allow_html=True)
                 st.markdown("---")
-                st.write("Please click Contact for further information at the navigation or click RETURN to classify another text.")
+                st.write("Please click Contact at the Navigation Menu for further information or click RETURN to classify another text.")
             else:
                 prediction = "Not Depressed"
                 st.success(f"Preprocessed text: {preprocessed_text}")
