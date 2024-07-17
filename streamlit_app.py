@@ -2,10 +2,12 @@ import streamlit as st
 import pandas as pd
 import string
 import re
+import joblib
 
 # Set page config
 st.set_page_config(
-    page_title="DepresCare"
+    page_title="DepresCare",
+    page_icon="🧠",
 )
 
 # Load Depression Lexicon
@@ -16,8 +18,8 @@ def load_lexicon():
 # Load the trained model and vectorizer
 @st.cache_data
 def load_model():
-    model = load('logistic_model.pkl')
-    vectorizer = load('tfidf_vectorizer.pkl')
+    model = joblib.load('logistic_model.pkl')
+    vectorizer = joblib.load('tfidf_vectorizer.pkl')
     return model, vectorizer
 
 # Define function to preprocess text
@@ -45,6 +47,30 @@ def detect_depression(text, signals):
         return matched_signals if matched_signals else []
     return []
 
+# Function to display Contact Help information
+def contact_help():
+    st.markdown('<h1 style="color: orange;">Contact Help</h1>', unsafe_allow_html=True)
+
+    st.markdown('<h3 style="color: orange;">Malaysian Mental Health Association (MMHA)</h3>', unsafe_allow_html=True)
+    st.write("**Email:** info@mmha.org.my")
+    st.write("**Contact:** +60 3-2780 6803")
+    st.markdown("""
+    For more information and resources, you can visit the [Malaysian Mental Health Association (MMHA) website](https://www.mmha.org.my).
+    """)
+
+    st.markdown("---")
+
+    st.markdown('<h3 style="color: orange;">UKM Counselling</h3>', unsafe_allow_html=True)
+    st.write("**Address:**")
+    st.write("Pusat Hal Ehwal Pelajar (HEP-UKM)")
+    st.write("Aras 7, Bangunan PUSANIKA")
+    st.write("43600 UKM, Bangi Selangor, MALAYSIA")
+    st.write("**Email:** hep@ukm.edu.my")
+    st.write("**Contact:** +603-8921 5347")
+    st.markdown("""
+    For more information and resources, you can visit the [UKM Counseling Unit website](https://www.ukm.my/hepukm/unit-kaunseling-2/).
+    """)
+
 # Main page content
 def main_page():
     st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
@@ -53,7 +79,7 @@ def main_page():
              "Three symptoms are used to detect depression from PHQ-9, which are:")
     st.markdown("1. Trouble falling or staying asleep, or sleeping too much?")
     st.markdown("2. Feeling tired or having little energy?")
-    st.markdown("3. Moving or speaking so slowly that other people could have noticed.?")
+    st.markdown("3. Moving or speaking so slowly that other people could have noticed?")
     st.markdown('<h2 style="color: orange;">What is Depression?</h2>', unsafe_allow_html=True)
     st.write("Depression is a mental health disorder characterized by persistent feelings of sadness, loss of interest or pleasure in activities that were once enjoyable, and a range of physical and emotional symptoms. These symptoms can vary in intensity and duration, but they often interfere with a person's ability to function normally in daily life.")
     st.markdown("######")
@@ -84,7 +110,7 @@ def classify_depression():
     try:
         phq3_col = 'Trouble falling or staying asleep, or sleeping too much?'
         phq4_col = 'Feeling tired or having little energy?'
-        phq8_col = 'Moving or speaking so slowly that other people could have noticed.?'
+        phq8_col = 'Moving or speaking so slowly that other people could have noticed?'
 
         depression_signals_phq3 = lexicon[phq3_col].dropna().tolist()
         depression_signals_phq4 = lexicon[phq4_col].dropna().tolist()
@@ -136,10 +162,17 @@ def classify_depression():
                     st.button("NEXT")
 
 # Main app logic
-if 'page' not in st.session_state:
-    st.session_state.page = "Main"
+def main():
+    st.sidebar.title("Navigation")
+    page_selection = st.sidebar.radio("Go to", ["Main Page", "Classify Depression", "Contact Help"])
 
-if st.session_state.page == "Main":
-    main_page()
-elif st.session_state.page == "Classify_Depression":
-    classify_depression()
+    if page_selection == "Main Page":
+        main_page()
+    elif page_selection == "Classify Depression":
+        classify_depression()
+    elif page_selection == "Contact Help":
+        contact_help()
+
+# Run the app
+if __name__ == "__main__":
+    main()
