@@ -73,7 +73,7 @@ def main():
 
     st.session_state.text = st.text_area("Enter your text here", st.session_state.text)
 
-    if st.button("CLASSIFY"):
+    if st.button("CLASSIFY", key="classify_button"):
         if st.session_state.text.strip() == "":
             st.error("No text entered. Please enter some text to classify.")
         else:
@@ -117,14 +117,14 @@ def main():
             col1, col2 = st.columns([1, 1])
 
             with col1:
-                if st.button("RETURN"):
+                if st.button("RETURN", key="return_button"):
                     st.session_state['page'] = 'home'
                     st.experimental_rerun()
 
             if prediction == "Depressed":
                 with col2:
-                    if st.button("NEXT"):
-                       Contack.main()
+                    if st.button("NEXT", key="next_button"):
+                       Contact.main()
 
     st.markdown("---")
 
