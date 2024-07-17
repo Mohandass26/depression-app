@@ -10,7 +10,7 @@ import User_Manual
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
-        options=["Home", "Classify Depression", "Contact", "Help"],
+        options=["Home", "Classify Depression", "Contact", "User Manual"],
         icons=["house", "search", "envelope", "question-circle"],
         menu_icon="cast",
         default_index=0,
@@ -37,5 +37,5 @@ elif selected == "Classify Depression":
 elif selected == "Contact":
     Contact.main()
 
-elif selected == "Help":
-    st.write("Help page content goes here. Provide relevant help information and resources.")
+elif selected == "User Manual":
+    User_Manual.main()
