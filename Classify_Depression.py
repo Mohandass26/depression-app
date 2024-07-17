@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import string
 import re
-import joblib
 
 # Load Depression Lexicon
 @st.cache_data
