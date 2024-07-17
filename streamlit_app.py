@@ -1,7 +1,5 @@
 import streamlit as st
-from contact_help import contact_help
-from classify_depression import classify_depression
-from user_manual import user_manual
+
 
 # Set page config
 st.set_page_config(
