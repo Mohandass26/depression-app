@@ -127,7 +127,6 @@ def main():
                         st.experimental_rerun()
 
     st.markdown("---")
-    st.markdown("<p style='text-align: center;'><a href='/Help'>Need help?</a></p>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
