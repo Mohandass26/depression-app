@@ -123,8 +123,8 @@ def main():
             if prediction == "Depressed":
                 with col2:
                     if st.button("NEXT"):
-                       elif selected == "Classify Depression":
-                       Classify_Depression.main()
+                       elif selected == "NEXT":
+                       Contack.main()
 
     st.markdown("---")
 
