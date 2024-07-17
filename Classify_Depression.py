@@ -3,8 +3,7 @@ import pandas as pd
 import string
 import re
 import joblib
-import Contact
-import Classify_Depression
+
 
 def main():
     # Load Depression Lexicon
