@@ -124,8 +124,9 @@ def main():
             if prediction == "Depressed":
                 with col2:
                     if st.button("NEXT"):
-                       st.session_state.page = "Classify Depression"
-
+                       if page == "NEXT":
+                          Contact.main()
+                        
     st.markdown("---")
 
 if __name__ == "__main__":
