@@ -2,11 +2,11 @@ import streamlit as st
 import pandas as pd
 import string
 import re
+import joblib
 
 # Set page config
 st.set_page_config(
-    page_title="DepresCare",
-    page_icon="🧠",
+    page_title="DepresCare"
 )
 
 # Load Depression Lexicon
