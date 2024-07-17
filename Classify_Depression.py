@@ -123,8 +123,8 @@ def main():
 
             if prediction == "Depressed":
                 with col2:
-                    st.button("NEXT")
-                    Contact.main()
+                    st.button("NEXT"):
+                        Contact.main()
                          
                         
     st.markdown("---")
