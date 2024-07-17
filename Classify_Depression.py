@@ -129,3 +129,6 @@ if st.button("CLASSIFY"):
 
 st.markdown("---")
 st.markdown("<p style='text-align: center;'><a href='/Help'>Need help?</a></p>", unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()
