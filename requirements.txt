@@ -1,7 +1,5 @@
 streamlit
 pandas
-altair
-base64
 nltk
 cleantext
 scikit-learn
