@@ -40,7 +40,7 @@ st.markdown('<p style="text-align:center;">Click the button below to check your 
 
 st.markdown("""
     <div style="display: flex; justify-content: center;">
-        <a href="Classify_Depression.py">
+        <a href="/Classify_Depression.py">
             <button style="background-color: blue; color: white; padding: 10px 24px; border: none; cursor: pointer; font-size: 16px; border-radius: 8px;">
                 CLICK
             </button>
