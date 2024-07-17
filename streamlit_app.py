@@ -10,7 +10,7 @@ with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
         options=["Home", "Classify Depression", "Contact", "User Manual"],
-        icons=["house", "search", "envelope", "question-circle"],
+        icons=["house", "search", "envelope", "book"],  # Changed "question-circle" to "book"
         menu_icon="cast",
         default_index=0,
     )
@@ -47,11 +47,8 @@ if selected == "Home":
 
     st.markdown("---")
 
-    st.markdown('<p style="text-align:center;">Click the button below to classify your depression based on PHQ-9</p>', unsafe_allow_html=True)
+    st.markdown('<p style="text-align:center;">Click on the navigation to classify your depression based on PHQ-9</p>', unsafe_allow_html=True)
 
-    # Render a button to navigate to Classify Depression page
-    if st.button("CLICK"):
-        st.experimental_set_query_params(selected="Classify_Depression")
 
 elif selected == "Classify Depression":
     Classify_Depression.main()
