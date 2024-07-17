@@ -1,10 +1,9 @@
-# main.py
 import streamlit as st
 from streamlit_option_menu import option_menu
+import pandas as pd
 import Classify_Depression
 import Contact
 import User_Manual
-
 
 # Define the options for the menu
 with st.sidebar:
@@ -30,6 +29,40 @@ if selected == "Home":
     st.markdown('<h2 style="color: orange;">What is Depression?</h2>', unsafe_allow_html=True)
 
     st.write("Depression is a mental health disorder characterized by persistent feelings of sadness, loss of interest or pleasure in activities that were once enjoyable, and a range of physical and emotional symptoms. These symptoms can vary in intensity and duration, but they often interfere with a person's ability to function normally in daily life.")
+
+    st.markdown("######")
+
+    st.markdown('<p style="font-weight:bold; color:orange;">Symptoms are used to detect depression based on PHQ-9 are as below: </p>', unsafe_allow_html=True)
+
+    # Load Depression Lexicon
+    @st.cache_data
+    def load_lexicon():
+        return pd.read_csv('Depression_lexicon.csv')
+
+    # Loading the lexicon
+    lexicon = load_lexicon()
+
+    # Displaying lexicon data directly
+    st.write(lexicon)
+
+    st.markdown("---")
+    st.markdown('<p style="text-align:center;">Click the button below to check your Depression based on PHQ-9</p>', unsafe_allow_html=True)
+
+    st.markdown("""
+        <div style="display: flex; justify-content: center;">
+            <a href="/Classify_Depression">
+                <button style="background-color: blue; color: white; padding: 10px 24px; border: none; cursor: pointer; font-size: 16px; border-radius: 8px;">
+                    CLICK
+                </button>
+            </a>
+        </div>
+        <style>
+            .button:hover {
+                background-color: lightblue;
+                color : white;
+            }
+        </style>
+    """, unsafe_allow_html=True)
 
 elif selected == "Classify Depression":
     Classify_Depression.main()
