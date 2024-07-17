@@ -173,7 +173,7 @@ def classify_depression():
             with col2:
                 if any(detected_signals.values()):
                     if st.button("NEXT"):
-                    st.session_state.page = "Contact Help"
+                       st.session_state.page = "Contact Help"
 
 # User Manual content
 def user_manual():
