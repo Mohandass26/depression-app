@@ -169,11 +169,12 @@ def classify_depression():
             # Navigation buttons
             col1, col2 = st.columns([1, 1])
             with col1:
-                st.button("RETURN")
+                if st.button("RETURN"):
+                    st.session_state.page = "Main Page"
             with col2:
                 if any(detected_signals.values()):
                     if st.button("NEXT"):
-                       st.session_state.page = "Contact Help"
+                        st.session_state.page = "Contact Help"
 
 # User Manual content
 def user_manual():
@@ -231,55 +232,54 @@ def user_manual():
         unsafe_allow_html=True
     )
 
+    st.markdown('<h1 style="color: orange;">DepresCare User Guide</h1>', unsafe_allow_html=True)
 
-st.markdown('<h1 style="color: orange;">DepresCare User Guide</h1>', unsafe_allow_html=True)
+    def create_section(button_text, description, button_color_class):
+        st.markdown(
+            f"""
+            <div class="section-container">
+                <button class="button {button_color_class}">{button_text}</button>
+                <div class="section-content">{description}</div>
+            </div>
+            """, unsafe_allow_html=True
+        )
 
-def create_section(button_text, description, button_color_class):
-    st.markdown(
-        f"""
-        <div class="section-container">
-            <button class="button {button_color_class}">{button_text}</button>
-            <div class="section-content">{description}</div>
-        </div>
-        """, unsafe_allow_html=True
-    )
+    # Define each section separately with button_text outside the function call
+    button_texts = [
+        "Text Box",
+        "CLASSIFY",
+        "NEXT",
+        "RETURN",
+        "CLICK"
+    ]
 
-# Define each section separately with button_text outside the function call
-button_texts = [
-    "Text Box",
-    "CLASSIFY",
-    "NEXT",
-    "RETURN",
-    "CLICK"
-]
+    descriptions = [
+        "Users can fill in the text box with any text they want to express their feelings or emotions during that situation.",
+        'Users can click the "CLASSIFY" button to let the machine classify their text based on selected depressive symptoms found in the PHQ-9 instruments.',
+        'Users can click the "NEXT" button to seek professional help for further details.',
+        'Users can click the "RETURN" button to re-enter the text.',
+        'Users can press the "CLICK" button to visit the next page for Classifying Depression.'
+    ]
 
-descriptions = [
-    "Users can fill in the text box with any text they want to express their feelings or emotions during that situation.",
-    'Users can click the "CLASSIFY" button to let the machine classify their text based on selected depressive symptoms found in the PHQ-9 instruments.',
-    'Users can click the "NEXT" button to seek professional help for further details.',
-    'Users can click the "RETURN" button to re-enter the text.',
-    'Users can press the "CLICK" button to visit the next page for Classifying Depression.'
-]
+    button_colors = [
+        "button-textbox",
+        "button-classify",
+        "button-next",
+        "button-return",
+        "button-click"
+    ]
 
-button_colors = [
-    "button-textbox",
-    "button-classify",
-    "button-next",
-    "button-return",
-    "button-click"
-]
+    # Mapping button colors to button texts
+    button_color_map = {
+        "Text Box": "button-textbox",
+        "CLASSIFY": "button-classify",
+        "NEXT": "button-next",
+        "RETURN": "button-return",
+        "CLICK": "button-click"
+    }
 
-# Mapping button colors to button texts
-button_color_map = {
-    "Text Box": "button-textbox",
-    "CLASSIFY": "button-classify",
-    "NEXT": "button-next",
-    "RETURN": "button-return",
-    "CLICK": "button-click"
-}
-
-for i in range(len(button_texts)):
-    create_section(button_texts[i], descriptions[i], button_color_map[button_texts[i]])
+    for i in range(len(button_texts)):
+        create_section(button_texts[i], descriptions[i], button_color_map[button_texts[i]])
 
 # Sidebar navigation
 st.sidebar.title("Navigation")
@@ -293,3 +293,14 @@ elif page == "Contact Help":
     contact_help()
 elif page == "User Manual":
     user_manual()
+
+# Handle page navigation
+if 'page' not in st.session_state:
+    st.session_state.page = "Main Page"
+
+if st.session_state.page == "Main Page":
+    main_page()
+elif st.session_state.page == "Classify Depression":
+    classify_depression()
+elif st.session_state.page == "Contact Help":
+    contact_help()
