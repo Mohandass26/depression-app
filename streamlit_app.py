@@ -51,7 +51,7 @@ if selected == "Home":
 
     # Render a button to navigate to Classify Depression page
     if st.button("CLICK"):
-        st.experimental_set_query_params(selected="Classify Depression")
+        st.experimental_set_query_params(selected="Classify_Depression.py")
 
 elif selected == "Classify Depression":
     Classify_Depression.main()
