@@ -121,10 +121,6 @@ def main():
                     st.session_state['page'] = 'home'
                     st.experimental_rerun()
 
-            if prediction == "Depressed":
-                with col2:
-                    #st.button("NEXT"):
-                       
                          
                         
     st.markdown("---")
