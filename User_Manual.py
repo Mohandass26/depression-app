@@ -1,61 +1,60 @@
 import streamlit as st
 
 def main():
-# Custom CSS to style buttons and sections
-st.markdown(
-    """
-    <style>
-    .section-container {
-        display: flex;
-        align-items: flex-start; /* Adjusted alignment */
-        background-color: #f5deb3; /* Light brown */
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
-    .button {
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-right: 20px;
-        min-width: 150px; /* Fixed width for buttons */
-        text-align: center;
-        font-size: 16px;
-        font-weight: bold;
-    }
-    .button-textbox {
-        background-color: #333333; /* Light black */
-    }
-    .button-classify {
-        background-color: black;
-        color: white; /* White text */
-    }
-    .button-classify:hover {
-        background-color: #1a1a1a; /* Darkened black on hover */
-        color: red;
-    }
-    .button-next,
-    .button-return,
-    .button-click {
-        background-color: blue; /* Blue */
-    }
-    .section-content {
-        flex: 1;
-        margin-left: 20px;
-        font-size: 16px;
-        color: black; /* Text color */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+    # Custom CSS to style buttons and sections
+    st.markdown(
+        """
+        <style>
+        .section-container {
+            display: flex;
+            align-items: flex-start; /* Adjusted alignment */
+            background-color: #f5deb3; /* Light brown */
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 20px;
+            min-width: 150px; /* Fixed width for buttons */
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .button-textbox {
+            background-color: #333333; /* Light black */
+        }
+        .button-classify {
+            background-color: black;
+            color: white; /* White text */
+        }
+        .button-classify:hover {
+            background-color: #1a1a1a; /* Darkened black on hover */
+            color: red;
+        }
+        .button-next,
+        .button-return,
+        .button-click {
+            background-color: blue; /* Blue */
+        }
+        .section-content {
+            flex: 1;
+            margin-left: 20px;
+            font-size: 16px;
+            color: black; /* Text color */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-# Main title for the user guide
-st.markdown('<h1 style="color: orange;">DepresCare User Guide</h1>', unsafe_allow_html=True)
-
+    # Main title for the user guide
+    st.markdown('<h1 style="color: orange;">DepresCare User Guide</h1>', unsafe_allow_html=True)
 
     # Function to create a styled section with a button and description
     def create_section(button_text, description, button_color_class):
