@@ -2,21 +2,12 @@ import streamlit as st
 import pandas as pd
 import string
 import re
-from joblib import load
 
 # Load Depression Lexicon
 @st.cache_data
 def load_lexicon():
     return pd.read_csv('Depression_lexicon.csv')
 
-# Load the trained model and vectorizer
-@st.cache_data
-def load_model():
-    model = load('logistic_model.pkl')
-    vectorizer = load('tfidf_vectorizer.pkl')
-    return model, vectorizer
-
-model, vectorizer = load_model()
 
 # Loading the lexicon and combining PHQ signals
 lexicon = load_lexicon()
