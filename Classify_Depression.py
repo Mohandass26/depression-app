@@ -123,8 +123,8 @@ def main():
             if prediction == "Depressed":
                 with col2:
                     if st.button("NEXT"):
-                        st.session_state['page'] = 'Contact'
-                        st.experimental_rerun()
+                       elif selected == "Classify Depression":
+                       Classify_Depression.main()
 
     st.markdown("---")
 
