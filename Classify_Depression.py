@@ -3,6 +3,7 @@ import pandas as pd
 import string
 import re
 import joblib
+import Contact
 
 def main():
     # Load Depression Lexicon
@@ -123,7 +124,6 @@ def main():
             if prediction == "Depressed":
                 with col2:
                     if st.button("NEXT"):
-                       elif selected == "NEXT":
                        Contack.main()
 
     st.markdown("---")
