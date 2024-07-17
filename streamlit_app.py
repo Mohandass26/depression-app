@@ -38,26 +38,14 @@ st.write(lexicon)
 st.markdown("---")
 st.markdown('<p style="text-align:center;">Click the button below to check your Depression based on PHQ-9</p>', unsafe_allow_html=True)
 
-# Create a button with styling
-if st.button("CLICK", key="click_button", help="Click to classify depression"):
-    # Redirect logic goes here
-    # Set a session state or perform some action to handle navigation
-    st.session_state['page'] = 'Classify_Depression.py'
-   
-# CSS for button styling
-st.markdown("""
-    <style>
-        .stButton button {
-            background-color: blue;
-            color: white;
-            padding: 10px 24px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 8px;
-        }
-        .stButton button:hover {
-            background-color: lightblue;
-        }
-    </style>
-""", unsafe_allow_html=True)
+if 'page' not in st.session_state:
+    st.session_state['page'] = 'home'  # Default page
+
+if st.session_state['page'] == 'home':
+    # Display home page content
+    st.markdown('<h1 style="color: orange;">Welcome to DepresCare</h1>', unsafe_allow_html=True)
+    # Include the button logic from above
+elif st.session_state['page'] == 'Classify_Depression':
+    # Import and run the Classify_Depression.py content
+    import Classify_Depression
+    Classify_Depression.main()
