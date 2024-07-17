@@ -4,11 +4,6 @@ from streamlit_option_menu import option_menu
 import Classify_Depression
 import Contact
 
-st.set_page_config(
-    page_title="DepresCare",
-    page_icon="🏠",
-    layout="centered"
-)
 
 # Custom title with color
 st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
