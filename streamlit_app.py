@@ -47,11 +47,9 @@ if selected == "Home":
 
     st.markdown("---")
 
-    st.markdown('<p style="text-align:center;">Click the button below to classify your depression based on PHQ-9</p>', unsafe_allow_html=True)
-
     # Render a button to navigate to Classify Depression page
     if st.button("CLICK"):
-         Classify_Depression.main()
+        st.experimental_set_query_params(selected="Classify Depression")
 
 elif selected == "Classify Depression":
     Classify_Depression.main()
