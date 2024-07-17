@@ -18,6 +18,7 @@ with st.sidebar:
 
 # Navigation logic based on selected option
 if selected == "Home":
+    st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
     st.write("The purpose of DepresCare web application is to help users detect symptoms of depression found in text. "
              "DepresCare can assist users in identifying the type of depression by recognizing their depressive symptoms. "
              "Three symptoms are used to detect depression from PHQ-9, which are:")
