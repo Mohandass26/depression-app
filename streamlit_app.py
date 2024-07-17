@@ -71,6 +71,19 @@ def contact_help():
     For more information and resources, you can visit the [UKM Counseling Unit website](https://www.ukm.my/hepukm/unit-kaunseling-2/).
     """)
 
+    st.markdown("---")
+
+    st.markdown('<h1 style="color: orange;">Need Help?</h1>', unsafe_allow_html=True)
+    st.write("""
+    If you need help, please do not hesitate to contact the admin. We are here to assist you with any issues or questions you may have.
+    """)
+
+    st.markdown("---")
+
+    st.markdown('<h3 style="color: orange;">Contact Admin</h3>', unsafe_allow_html=True)
+    st.write("**Admin Name:** Mohandass")
+    st.write("**Email:** a189202@siswa.ukm.edu.my")
+
 # Main page content
 def main_page():
     st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
@@ -96,7 +109,7 @@ def main_page():
     
     # Button to navigate to classification page
     if st.button("CLICK"):
-        st.session_state.page = "Classify_Depression"
+        st.session_state.page = "Classify Depression"
 
 # Classification page content
 def classify_depression():
@@ -161,18 +174,66 @@ def classify_depression():
                 if any(detected_signals.values()):
                     st.button("NEXT")
 
-# Main app logic
-def main():
-    st.sidebar.title("Navigation")
-    page_selection = st.sidebar.radio("Go to", ["Main Page", "Classify Depression", "Contact Help"])
+# User Manual content
+def user_manual():
+    st.markdown('<h1 style="color: orange;">DepresCare User Guide</h1>', unsafe_allow_html=True)
+    
+    def create_section(button_text, description, button_color_class):
+        st.markdown(
+            f"""
+            <div class="section-container">
+                <button class="button {button_color_class}">{button_text}</button>
+                <div class="section-content">{description}</div>
+            </div>
+            """, unsafe_allow_html=True
+        )
 
-    if page_selection == "Main Page":
-        main_page()
-    elif page_selection == "Classify Depression":
-        classify_depression()
-    elif page_selection == "Contact Help":
-        contact_help()
+    # Define each section separately with button_text outside the function call
+    button_texts = [
+        "Text Box",
+        "CLASSIFY",
+        "NEXT",
+        "RETURN",
+        "CLICK"
+    ]
 
-# Run the app
-if __name__ == "__main__":
-    main()
+    descriptions = [
+        "Users can fill in the text box with any text they want to express their feelings or emotions during that situation.",
+        'Users can click the "CLASSIFY" button to let the machine classify their text based on selected depressive symptoms found in the PHQ-9 instruments.',
+        'Users can click the "NEXT" button to seek professional help for further details.',
+        'Users can click the "RETURN" button to re-enter the text.',
+        'Users can press the "CLICK" button to visit the next page for Classifying Depression.'
+    ]
+
+    button_colors = [
+        "button-textbox",
+        "button-classify",
+        "button-next",
+        "button-return",
+        "button-click"
+    ]
+
+    # Mapping button colors to button texts
+    button_color_map = {
+        "Text Box": "button-textbox",
+        "CLASSIFY": "button-classify",
+        "NEXT": "button-next",
+        "RETURN": "button-return",
+        "CLICK": "button-click"
+    }
+
+    for i in range(len(button_texts)):
+        create_section(button_texts[i], descriptions[i], button_color_map[button_texts[i]])
+
+# Sidebar navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Main Page", "Classify Depression", "Contact Help", "User Manual"])
+
+if page == "Main Page":
+    main_page()
+elif page == "Classify Depression":
+    classify_depression()
+elif page == "Contact Help":
+    contact_help()
+elif page == "User Manual":
+    user_manual()
