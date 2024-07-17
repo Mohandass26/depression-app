@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import string
 import re
-pip install joblib
+! pip install joblib
 from joblib import load
 
 # Load Depression Lexicon
