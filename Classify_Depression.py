@@ -12,8 +12,8 @@ def load_lexicon():
 # Load the trained model and vectorizer
 @st.cache_data
 def load_model():
-    model = joblib.load('logistic_model.pkl')
-    vectorizer = joblib.load('tfidf_vectorizer.pkl')
+    model = load('logistic_model.pkl')
+    vectorizer = load('tfidf_vectorizer.pkl')
     return model, vectorizer
 
 model, vectorizer = load_model()
