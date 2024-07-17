@@ -3,7 +3,8 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import Classify_Depression
 import Contact
-
+import Help
+import User Manual
 
 
 # Define the options for the menu
