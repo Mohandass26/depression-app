@@ -53,7 +53,7 @@ def main_page():
              "Three symptoms are used to detect depression from PHQ-9, which are:")
     st.markdown("1. Trouble falling or staying asleep, or sleeping too much?")
     st.markdown("2. Feeling tired or having little energy?")
-    st.markdown("3. Moving or speaking so slowly that other people could have noticed?")
+    st.markdown("3. Moving or speaking so slowly that other people could have noticed.?")
     st.markdown('<h2 style="color: orange;">What is Depression?</h2>', unsafe_allow_html=True)
     st.write("Depression is a mental health disorder characterized by persistent feelings of sadness, loss of interest or pleasure in activities that were once enjoyable, and a range of physical and emotional symptoms. These symptoms can vary in intensity and duration, but they often interfere with a person's ability to function normally in daily life.")
     st.markdown("######")
@@ -84,7 +84,7 @@ def classify_depression():
     try:
         phq3_col = 'Trouble falling or staying asleep, or sleeping too much?'
         phq4_col = 'Feeling tired or having little energy?'
-        phq8_col = 'Moving or speaking so slowly that other people could have noticed?'
+        phq8_col = 'Moving or speaking so slowly that other people could have noticed.?'
 
         depression_signals_phq3 = lexicon[phq3_col].dropna().tolist()
         depression_signals_phq4 = lexicon[phq4_col].dropna().tolist()
