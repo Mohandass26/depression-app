@@ -51,7 +51,7 @@ if selected == "Home":
 
     # Render a button to navigate to Classify Depression page
     if st.button("CLICK"):
-        st.markdown('<a href="/Classify_Depression"><button style="background-color: blue; color: white; padding: 10px 24px; border: none; cursor: pointer; font-size: 16px; border-radius: 8px;">Go to Classify Depression Page</button></a>', unsafe_allow_html=True)
+        st.experimental_set_query_params(selected="Classify Depression")
 
 elif selected == "Classify Depression":
     Classify_Depression.main()
