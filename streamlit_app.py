@@ -32,11 +32,11 @@ def set_background_image(image_url):
         unsafe_allow_html=True
     )
 
-# Set the background image
-set_background_image("https://media.istockphoto.com/id/450153013/vector/editable-vector-of-man-on-chair-with-head-in-hand.jpg?s=612x612&w=0&k=20&c=AxIo6RSthT11grRN1Ra5zjvm6yvn_A92MJVEUPPmUNI=")
-
 # Main content based on selected option
 if selected == "Main":
+    # Set the background image for the Main page only
+    set_background_image("https://media.istockphoto.com/id/450153013/vector/editable-vector-of-man-on-chair-with-head-in-hand.jpg?s=612x612&w=0&k=20&c=AxIo6RSthT11grRN1Ra5zjvm6yvn_A92MJVEUPPmUNI=")
+
     st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
     st.write("The purpose of DepresCare web application is to help users detect symptoms of depression found in text. "
              "DepresCare can assist users in identifying the type of depression by recognizing their depressive symptoms. "
