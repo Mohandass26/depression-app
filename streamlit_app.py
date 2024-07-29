@@ -15,6 +15,26 @@ with st.sidebar:
         default_index=0,
     )
 
+# Function to set the background image
+def set_background_image(image_url):
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("{image_url}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Set the background image
+set_background_image("https://media.istockphoto.com/id/450153013/vector/editable-vector-of-man-on-chair-with-head-in-hand.jpg?s=612x612&w=0&k=20&c=AxIo6RSthT11grRN1Ra5zjvm6yvn_A92MJVEUPPmUNI=")
+
 # Main content based on selected option
 if selected == "Main":
     st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
@@ -48,7 +68,6 @@ if selected == "Main":
     st.markdown("---")
 
     st.markdown('<p style="text-align:center;">Click on the navigation to classify your depression based on PHQ-9</p>', unsafe_allow_html=True)
-
 
 elif selected == "Classify Depression":
     Classify_Depression.main()
