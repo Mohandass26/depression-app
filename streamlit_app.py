@@ -7,13 +7,14 @@ import User_Manual
 
 # Function to switch between pages
 def switch_page(page_name: str):
-    # Set the page in session state
-    st.session_state.page = page_name
-    st.experimental_rerun()  # Trigger a rerun
+    st.experimental_set_query_params(page=page_name)
+    # Simulate a button click to force a rerun
+    st.button("temp_button", on_click=lambda: None)
 
 # Initialize session state for navigation
+query_params = st.experimental_get_query_params()
 if 'page' not in st.session_state:
-    st.session_state.page = "Main"
+    st.session_state.page = query_params.get('page', ["Main"])[0]
 
 # Sidebar navigation menu
 with st.sidebar:
@@ -47,7 +48,7 @@ def set_background_image(image_url):
     )
 
 # Main content based on selected option
-if st.session_state.get('page') == "Main":
+if st.session_state.page == "Main":
     # Set the background image for the Main page only
     set_background_image("https://media.istockphoto.com/id/450153013/vector/editable-vector-of-man-on-chair-with-head-in-hand.jpg?s=612x612&w=0&k=20&c=AxIo6RSthT11grRN1Ra5zjvm6yvn_A92MJVEUPPmUNI=")
 
@@ -86,11 +87,11 @@ if st.session_state.get('page') == "Main":
     if st.button("CLICK"):
         switch_page("Classify Depression")
 
-elif st.session_state.get('page') == "Classify Depression":
+elif st.session_state.page == "Classify Depression":
     Classify_Depression.main()
 
-elif st.session_state.get('page') == "Contact":
+elif st.session_state.page == "Contact":
     Contact.main()
 
-elif st.session_state.get('page') == "User Manual":
+elif st.session_state.page == "User Manual":
     User_Manual.main()
