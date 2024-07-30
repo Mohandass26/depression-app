@@ -7,28 +7,13 @@ import User_Manual
 
 # Function to switch between pages
 def switch_page(page_name: str):
-    from streamlit import _RerunData, _RerunException
-    from streamlit.source_util import get_pages
+    # Set the page in session state
+    st.session_state.page = page_name
+    st.experimental_rerun()  # Trigger a rerun
 
-    def standardize_name(name: str) -> str:
-        return name.lower().replace("_", " ")
-    
-    page_name = standardize_name(page_name)
-
-    pages = get_pages("streamlit_app.py")  # Replace with your main script name if different
-
-    for page_hash, config in pages.items():
-        if standardize_name(config["page_name"]) == page_name:
-            raise _RerunException(
-                _RerunData(
-                    page_script_hash=page_hash,
-                    page_name=page_name,
-                )
-            )
-
-    page_names = [standardize_name(config["page_name"]) for config in pages.values()]
-
-    raise ValueError(f"Could not find page {page_name}. Must be one of {page_names}")
+# Initialize session state for navigation
+if 'page' not in st.session_state:
+    st.session_state.page = "Main"
 
 # Sidebar navigation menu
 with st.sidebar:
