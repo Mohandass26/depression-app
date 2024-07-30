@@ -21,7 +21,7 @@ with st.sidebar:
         options=["Main", "Classify Depression", "Contact", "User Manual"],
         icons=["house", "search", "envelope", "book"],
         menu_icon="cast",
-        default_index=0,
+        default_index=["Main", "Classify Depression", "Contact", "User Manual"].index(st.session_state.page),
     )
 
     # Update session state and query parameters based on sidebar selection
@@ -81,10 +81,22 @@ if st.session_state.page == "Main":
         switch_page("Classify Depression")
 
 elif st.session_state.page == "Classify Depression":
-    Classify_Depression.main()
+    if hasattr(Classify_Depression, 'main'):
+        Classify_Depression.main()
+    else:
+        st.error("Classify_Depression.main() function is missing.")
 
 elif st.session_state.page == "Contact":
-    Contact.main()
+    if hasattr(Contact, 'main'):
+        Contact.main()
+    else:
+        st.error("Contact.main() function is missing.")
 
 elif st.session_state.page == "User Manual":
-    User_Manual.main()
+    if hasattr(User_Manual, 'main'):
+        User_Manual.main()
+    else:
+        st.error("User_Manual.main() function is missing.")
+
+else:
+    st.error("Page not found. Please use the navigation menu.")
