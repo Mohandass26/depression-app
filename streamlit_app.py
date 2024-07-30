@@ -5,13 +5,11 @@ import Classify_Depression
 import Contact
 import User_Manual
 
-# Function to switch between pages
+# Function to switch between pages using URL parameters
 def switch_page(page_name: str):
     st.experimental_set_query_params(page=page_name)
-    # Simulate a button click to force a rerun
-    st.button("temp_button", on_click=lambda: None)
 
-# Initialize session state for navigation
+# Initialize session state based on query parameters
 query_params = st.experimental_get_query_params()
 if 'page' not in st.session_state:
     st.session_state.page = query_params.get('page', ["Main"])[0]
@@ -26,9 +24,9 @@ with st.sidebar:
         default_index=0,
     )
 
-    # Update session state based on sidebar selection
+    # Update session state and query parameters based on sidebar selection
     if selected:
-        st.session_state.page = selected
+        switch_page(selected)
 
 # Function to set the background image
 def set_background_image(image_url):
@@ -49,7 +47,6 @@ def set_background_image(image_url):
 
 # Main content based on selected option
 if st.session_state.page == "Main":
-    # Set the background image for the Main page only
     set_background_image("https://media.istockphoto.com/id/450153013/vector/editable-vector-of-man-on-chair-with-head-in-hand.jpg?s=612x612&w=0&k=20&c=AxIo6RSthT11grRN1Ra5zjvm6yvn_A92MJVEUPPmUNI=")
 
     st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
@@ -74,14 +71,10 @@ if st.session_state.page == "Main":
     def load_lexicon():
         return pd.read_csv('Depression_lexicon.csv')
 
-    # Loading the lexicon
     lexicon = load_lexicon()
-
-    # Displaying lexicon data directly
     st.write(lexicon)
 
     st.markdown("---")
-
     st.markdown('<p style="text-align:center;">Click on the navigation to classify your depression based on PHQ-9</p>', unsafe_allow_html=True)
 
     if st.button("CLICK"):
