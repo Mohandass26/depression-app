@@ -5,29 +5,15 @@ import Classify_Depression
 import Contact
 import User_Manual
 
-# Function to switch between pages using URL parameters
-def switch_page(page_name: str):
-    st.experimental_set_query_params(page=page_name)
-    st.session_state.page = page_name  # Ensure the session state is updated
-
-# Initialize session state based on query parameters
-query_params = st.experimental_get_query_params()
-if 'page' not in st.session_state:
-    st.session_state.page = query_params.get('page', ["Main"])[0]
-
-# Sidebar navigation menu
+# Define the options for the menu
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
         options=["Main", "Classify Depression", "Contact", "User Manual"],
-        icons=["house", "search", "envelope", "book"],
+        icons=["house", "search", "envelope", "book"],  # Changed "question-circle" to "book"
         menu_icon="cast",
         default_index=0,
     )
-
-    # Update session state and query parameters based on sidebar selection
-    if selected:
-        switch_page(selected)
 
 # Function to set the background image
 def set_background_image(image_url):
@@ -47,7 +33,8 @@ def set_background_image(image_url):
     )
 
 # Main content based on selected option
-if st.session_state.page == "Main":
+if selected == "Main":
+    # Set the background image for the Main page only
     set_background_image("https://media.istockphoto.com/id/450153013/vector/editable-vector-of-man-on-chair-with-head-in-hand.jpg?s=612x612&w=0&k=20&c=AxIo6RSthT11grRN1Ra5zjvm6yvn_A92MJVEUPPmUNI=")
 
     st.markdown('<h1 style="color: orange;">DepresCare</h1>', unsafe_allow_html=True)
@@ -68,25 +55,25 @@ if st.session_state.page == "Main":
     st.markdown('<p style="font-weight:bold; color:orange;">Symptoms used to detect depression based on PHQ-9:</p>', unsafe_allow_html=True)
 
     # Load Depression Lexicon
-    @st.cache_data
+    @st.cache
     def load_lexicon():
         return pd.read_csv('Depression_lexicon.csv')
 
+    # Loading the lexicon
     lexicon = load_lexicon()
+
+    # Displaying lexicon data directly
     st.write(lexicon)
 
     st.markdown("---")
+
     st.markdown('<p style="text-align:center;">Click on the navigation to classify your depression based on PHQ-9</p>', unsafe_allow_html=True)
 
-    if st.button("CLICK"):
-        st.session_state.page = "Classify Depression"  # Set the session state to "Classify Depression"
-        st.experimental_rerun()  # Rerun the script to navigate to the new page
-
-elif st.session_state.page == "Classify Depression":
+elif selected == "Classify Depression":
     Classify_Depression.main()
 
-elif st.session_state.page == "Contact":
+elif selected == "Contact":
     Contact.main()
 
-elif st.session_state.page == "User Manual":
+elif selected == "User Manual":
     User_Manual.main()
