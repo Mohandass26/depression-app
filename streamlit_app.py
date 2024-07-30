@@ -5,7 +5,11 @@ import Classify_Depression
 import Contact
 import User_Manual
 
-# Define the options for the menu
+# Initialize session state for navigation
+if 'page' not in st.session_state:
+    st.session_state.page = "Main"
+
+# Sidebar navigation menu
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -14,6 +18,10 @@ with st.sidebar:
         menu_icon="cast",
         default_index=0,
     )
+
+    # Update session state based on sidebar selection
+    if selected:
+        st.session_state.page = selected
 
 # Function to set the background image
 def set_background_image(image_url):
@@ -33,7 +41,7 @@ def set_background_image(image_url):
     )
 
 # Main content based on selected option
-if selected == "Main":
+if st.session_state.page == "Main":
     # Set the background image for the Main page only
     set_background_image("https://media.istockphoto.com/id/450153013/vector/editable-vector-of-man-on-chair-with-head-in-hand.jpg?s=612x612&w=0&k=20&c=AxIo6RSthT11grRN1Ra5zjvm6yvn_A92MJVEUPPmUNI=")
 
@@ -55,7 +63,7 @@ if selected == "Main":
     st.markdown('<p style="font-weight:bold; color:orange;">Symptoms used to detect depression based on PHQ-9:</p>', unsafe_allow_html=True)
 
     # Load Depression Lexicon
-    @st.cache
+    @st.cache_data
     def load_lexicon():
         return pd.read_csv('Depression_lexicon.csv')
 
@@ -70,13 +78,13 @@ if selected == "Main":
     st.markdown('<p style="text-align:center;">Click on the navigation to classify your depression based on PHQ-9</p>', unsafe_allow_html=True)
 
     if st.button("CLICK"):
-        selected = "Classify Depression"
+        st.session_state.page = "Classify Depression"
 
-elif selected == "Classify Depression":
+elif st.session_state.page == "Classify Depression":
     Classify_Depression.main()
 
-elif selected == "Contact":
+elif st.session_state.page == "Contact":
     Contact.main()
 
-elif selected == "User Manual":
+elif st.session_state.page == "User Manual":
     User_Manual.main()
