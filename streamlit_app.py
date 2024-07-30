@@ -5,9 +5,30 @@ import Classify_Depression
 import Contact
 import User_Manual
 
-# Initialize session state for navigation
-if 'page' not in st.session_state:
-    st.session_state.page = "Main"
+# Function to switch between pages
+def switch_page(page_name: str):
+    from streamlit import _RerunData, _RerunException
+    from streamlit.source_util import get_pages
+
+    def standardize_name(name: str) -> str:
+        return name.lower().replace("_", " ")
+    
+    page_name = standardize_name(page_name)
+
+    pages = get_pages("streamlit_app.py")  # Replace with your main script name if different
+
+    for page_hash, config in pages.items():
+        if standardize_name(config["page_name"]) == page_name:
+            raise _RerunException(
+                _RerunData(
+                    page_script_hash=page_hash,
+                    page_name=page_name,
+                )
+            )
+
+    page_names = [standardize_name(config["page_name"]) for config in pages.values()]
+
+    raise ValueError(f"Could not find page {page_name}. Must be one of {page_names}")
 
 # Sidebar navigation menu
 with st.sidebar:
@@ -41,7 +62,7 @@ def set_background_image(image_url):
     )
 
 # Main content based on selected option
-if st.session_state.page == "Main":
+if st.session_state.get('page') == "Main":
     # Set the background image for the Main page only
     set_background_image("https://media.istockphoto.com/id/450153013/vector/editable-vector-of-man-on-chair-with-head-in-hand.jpg?s=612x612&w=0&k=20&c=AxIo6RSthT11grRN1Ra5zjvm6yvn_A92MJVEUPPmUNI=")
 
@@ -78,13 +99,13 @@ if st.session_state.page == "Main":
     st.markdown('<p style="text-align:center;">Click on the navigation to classify your depression based on PHQ-9</p>', unsafe_allow_html=True)
 
     if st.button("CLICK"):
-        st.session_state.page = "Classify Depression"
+        switch_page("Classify Depression")
 
-elif st.session_state.page == "Classify Depression":
+elif st.session_state.get('page') == "Classify Depression":
     Classify_Depression.main()
 
-elif st.session_state.page == "Contact":
+elif st.session_state.get('page') == "Contact":
     Contact.main()
 
-elif st.session_state.page == "User Manual":
+elif st.session_state.get('page') == "User Manual":
     User_Manual.main()
